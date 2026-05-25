@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 pt-3">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+        <div>
+            <div class="badge bg-dark text-white px-3 py-2 rounded-pill mb-2 fw-semibold">
+                <i class="bi bi-shield-lock"></i> Secured Administrator View
+            </div>
+            <h2 class="display-6 fw-bold text-dark lh-sm">Management Dashboard</h2>
+            <p class="text-muted fs-5 mb-0">Overview of all highly-qualified candidates (85%+).</p>
+        </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5 slide-up">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="py-3 px-4">Candidate Info</th>
+                            <th class="py-3 px-4 text-center">Score</th>
+                            <th class="py-3 px-4">Contact</th>
+                            <th class="py-3 px-4 text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for app in applications %}
+                        <tr>
+                            <td class="p-4">
+                                <b>{{ app.name }}</b>
+                            </td>
+
+                            <td class="p-4 text-center">
+                                {{ app.ats_score }}%
+                            </td>
+
+                            <td class="p-4">
+                                📧 {{ app.email }} <br>
+                                📞 {{ app.phone }}
+                            </td>
+
+                            <td class="p-4 text-end">
+
+                                <!-- ✅ PDF OPEN BUTTON -->
+                                <a href="/resume/{{ app.resume_path }}" target="_blank">
+                                    <button class="btn btn-sm btn-danger">
+                                        📄 View PDF
+                                    </button>
+                                </a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

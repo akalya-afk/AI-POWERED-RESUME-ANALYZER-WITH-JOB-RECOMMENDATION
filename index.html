@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <div class="row align-items-center justify-content-between min-vh-75">
+        <div class="col-lg-6 mb-5 mb-lg-0 slide-up">
+            <div class="badge bg-orange-soft text-orange px-3 py-2 rounded-pill mb-3 fw-semibold">
+                <i class="bi bi-stars"></i> Intelligent Resume Evaluation
+            </div>
+            <h1 class="display-3 fw-bold text-dark lh-sm mb-4">
+                Accelerate Hiring with <span class="text-gradient-orange">AI-Powered ATS</span>
+            </h1>
+            <p class="lead text-muted mb-5 pe-lg-5">
+                Upload your resume, get instantly evaluated by our modern algorithmic system, and seamlessly land into the HR pipelines of top-tier companies. Minimum requirement: 85% ATS Score.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3">
+                <a href="{{ url_for('signup') }}" class="btn btn-orange btn-lg px-5 rounded-pill shadow icon-hover">
+                    Get Evaluated <i class="bi bi-arrow-right ms-2 transition-icon"></i>
+                </a>
+                <a href="{{ url_for('hr_login') }}" class="btn btn-white btn-lg px-5 rounded-pill shadow-sm border text-dark">
+                    HR Portal
+                </a>
+            </div>
+            <div class="mt-5 d-flex align-items-center gap-4 text-muted small fw-medium">
+                <div><i class="bi bi-check2-circle text-orange-gradient fs-5 align-middle me-1"></i> Smart Parsing</div>
+                <div><i class="bi bi-check2-circle text-orange-gradient fs-5 align-middle me-1"></i> MongoDB Storage</div>
+                <div><i class="bi bi-check2-circle text-orange-gradient fs-5 align-middle me-1"></i> Instant Feedback</div>
+            </div>
+        </div>
+        <div class="col-lg-5 slide-left">
+            <div class="position-relative">
+                <div class="abstract-shape bg-gradient-orange position-absolute top-0 end-0 rounded-circle filter-blur z-n1" style="width: 300px; height: 300px; opacity: 0.2; transform: translate(10%, -10%);"></div>
+                <div class="abstract-shape bg-gradient-orange position-absolute bottom-0 start-0 rounded-circle filter-blur z-n1" style="width: 250px; height: 250px; opacity: 0.15; transform: translate(-20%, 20%);"></div>
+                
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-white/80 glass-card">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Job Application Success" class="img-fluid object-fit-cover" style="height: 350px;">
+                    <div class="card-body p-4 text-center">
+                        <div class="score-ring mx-auto mb-3">
+                            <span class="fs-2 fw-bold text-orange">92<span class="fs-5 text-muted">%</span></span>
+                        </div>
+                        <h5 class="fw-bold mb-1">ANYA Resume</h5>
+                        <p class="text-success small fw-medium mb-0"><i class="bi bi-check-circle-fill"></i> Shortlisted by HR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

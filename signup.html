@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center min-vh-75 align-items-center slide-up">
+    <div class="col-md-5">
+        <div class="card shadow-lg border-0 rounded-4 glass-card p-2">
+            <div class="card-body p-5">
+                <div class="text-center mb-5">
+                    <div class="d-inline-flex bg-orange-soft text-orange rounded-circle p-3 mb-3">
+                        <i class="bi bi-person-plus fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark">Create an Account</h3>
+                    <p class="text-muted small">Join TalentATS and get instantly evaluated.</p>
+                </div>
+                <form method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="username" class="form-control rounded-pill px-4 focus-orange border-0 bg-light" id="floatingUser" placeholder="Username" required>
+                        <label for="floatingUser" class="ps-4 text-muted"><i class="bi bi-person me-2"></i> Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control rounded-pill px-4 focus-orange border-0 bg-light" id="floatingEmail" placeholder="name@example.com" required>
+                        <label for="floatingEmail" class="ps-4 text-muted"><i class="bi bi-envelope me-2"></i> Email Address</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="password" name="password" class="form-control rounded-pill px-4 focus-orange border-0 bg-light" id="floatingPassword" placeholder="Password" required>
+                        <label for="floatingPassword" class="ps-4 text-muted"><i class="bi bi-lock me-2"></i> Password</label>
+                    </div>
+                    <button type="submit" class="btn btn-orange rounded-pill w-100 py-3 fw-bold shadow-sm icon-hover">
+                        Sign Up <i class="bi bi-arrow-right ms-2 transition-icon"></i>
+                    </button>
+                    <div class="text-center mt-4">
+                        <span class="text-muted small">Already registered? <a href="{{ url_for('login') }}" class="text-orange fw-bold text-decoration-none border-bottom border-orange">Login</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

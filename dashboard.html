@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(135deg, #eef2f7, #d9e4f5);
+    }
+
+    .main-container {
+        max-width: 700px;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .card-custom {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .card-custom:hover {
+        transform: translateY(-3px);
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 10px;
+        transition: 0.2s;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0,123,255,0.2);
+    }
+
+    .btn-custom {
+        background: linear-gradient(45deg, #007bff, #00c6ff);
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+        transform: scale(1.03);
+    }
+
+    .skill-tag {
+        display: inline-block;
+        background: #f1f5ff;
+        padding: 6px 12px;
+        border-radius: 20px;
+        margin: 4px;
+        font-size: 14px;
+    }
+
+    .skill-missing {
+        background: #ffe5e5;
+        color: red;
+    }
+
+    .video-btn {
+        width: 100%;
+        margin-bottom: 8px;
+        border-radius: 8px;
+    }
+</style>
+
+<div class="main-container">
+
+    <!-- Title -->
+    <h2 class="text-center mb-4 fw-bold">🚀 Resume Analyzer</h2>
+
+    <!-- FORM CARD -->
+    <div class="card-custom mb-4">
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Enter Name" class="form-control mb-3" required>
+
+            <select name="job_role" class="form-control mb-3">
+                <option value="">Select Job Role</option>
+                <option value="python developer">Python Developer</option>
+                <option value="web developer">Web Developer</option>
+                <option value="java developer">Java Developer</option>
+                <option value="data analyst">Data Analyst</option>
+                <option value="frontend developer">Frontend Developer</option>
+                <option value="backend developer">Backend Developer</option>
+                <option value="full stack developer">Full Stack Developer</option>
+                <option value="software engineer">Software Engineer</option>
+                <option value="devops engineer">DevOps Engineer</option>
+                <option value="machine learning engineer">Machine Learning Engineer</option>
+                <option value="cyber security">Cyber Security</option>
+                <option value="mobile app developer">Mobile App Developer</option>
+            </select>
+
+            <input type="file" name="resume" class="form-control mb-3" accept=".pdf" required>
+
+            <button type="submit" class="btn-custom w-100">
+                🚀 Analyze Resume
+            </button>
+        </form>
+
+    </div>
+
+    <!-- RESULT -->
+    {% if score is defined %}
+    <div class="card-custom">
+
+        <h4>
+            ATS Score: 
+            <span class="text-primary">{{ score }}%</span>
+        </h4>
+
+        {% if score < 80 %}
+            <p class="text-danger fw-bold">⚠️ Improve your resume</p>
+        {% else %}
+            <p class="text-success fw-bold">✅ Good Resume</p>
+        {% endif %}
+
+        <hr>
+
+        <!-- Skills -->
+        <h5>✅ Found Skills</h5>
+        {% for skill in found_skills %}
+            <span class="skill-tag">{{ skill }}</span>
+        {% endfor %}
+
+        <h5 class="mt-3">❌ Missing Skills</h5>
+        {% for skill in missing_skills %}
+            <span class="skill-tag skill-missing">{{ skill }}</span>
+        {% endfor %}
+
+        <hr>
+
+        <!-- Courses -->
+        <h5>📚 Courses</h5>
+        <ul>
+            {% for course in courses %}
+                <li>{{ course }}</li>
+            {% endfor %}
+        </ul>
+
+        <hr>
+
+        <!-- Videos -->
+        <h5>📺 Videos</h5>
+        {% if videos %}
+            {% for video in videos %}
+                <a href="{{ video }}" target="_blank" class="btn btn-outline-danger video-btn">
+                    ▶️ Watch Video
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>No videos available</p>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

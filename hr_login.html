@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center min-vh-75 align-items-center slide-up">
+    <div class="col-md-5">
+        <div class="card shadow-lg border-0 rounded-4 glass-card p-2 border-top border-4 border-dark">
+            <div class="card-body p-5">
+                <div class="text-center mb-5">
+                    <div class="d-inline-flex bg-dark text-white rounded-circle p-3 mb-3 shadow">
+                        <i class="bi bi-fingerprint fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark">HR Authentication</h3>
+                    <p class="text-muted small">Enter your Unique ID to access candidate data.</p>
+                </div>
+                <form method="POST">
+                    <div class="form-floating mb-4">
+                        <input type="text" name="unique_id" class="form-control rounded-pill px-4 focus-orange border-dark bg-light fw-bold letter-spacing-wide" id="floatingID" placeholder="HR Unique ID" required>
+                        <label for="floatingID" class="ps-4 text-muted"><i class="bi bi-key me-2"></i> Unique Identifier</label>
+                    </div>
+                    <button type="submit" class="btn btn-dark rounded-pill w-100 py-3 fw-bold shadow-sm icon-hover">
+                        Access Portal <i class="bi bi-arrow-right ms-2 transition-icon"></i>
+                    </button>
+                    <div class="text-center mt-4 pt-2">
+                        <a href="{{ url_for('login') }}" class="text-muted text-decoration-none small fw-medium"><i class="bi bi-arrow-left me-1"></i> Return User Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
